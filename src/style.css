@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=REM:wght@100&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+#card {
+  height: 80vh;
+  width: 28rem;
+  background-color: white;
+  border-radius: 20px;
+  background-image: url(images/day1.jpg);
+  background-size: 100% 100%;
+  color: white;
+}
+
+.card-content {
+  height: 80vh;
+  width: 28rem;
+  display: grid;
+  grid-template-rows: 1fr 4fr 2fr;
+  justify-content: center;
+  align-items: center;
+}
+
+.temperature,
+.forecast {
+  background-color: rgb(12, 11, 11, 0.5);
+}
+
+.search {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  height: fit-content;
+  transform: translate3D(0, -1px, 0) scale(1);
+  transition: all 0.5s ease-in-out;
+}
+.search button:hover {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transform: translate3D(0, -1px, 0) scale(1.2);
+  transition: all 0.5s ease-in-out;
+}
+
+.search img {
+  height: 1.6rem;
+}
+
+.search input {
+  border: none;
+  border-bottom: 2px solid black;
+  background-color: transparent;
+  color: white;
+  height: 2rem;
+  width: 17rem;
+  padding-left: 20px;
+  transition: 200ms ease-in-out;
+  font-size: 1rem;
+  font-family: "Roboto", sans-serif;
+}
+
+.search input:focus {
+  border: 1.5px black solid;
+  border-radius: 15px;
+  transition: 300ms ease-in-out;
+}
+
+.forecast {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  width: 25rem;
+  height: 10rem;
+}
+
+.temperature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 20rem;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+}
+
+.degrees {
+  font-size: 12rem;
+  font-family: "Kanit", sans-serif;
+  user-select: none;
+}
+
+#select-temperature {
+  display: flex;
+  justify-content: space-evenly;
+  width: 10em;
+  padding: 10px;
+}
+
+.temperature button {
+  color: white;
+  font-size: 1.8rem;
+  font-family: "REM", sans-serif;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  transition: 200ms;
+  cursor: pointer;
+  width: 1.5em;
+}
+
+/* Animação C F */
+.cool-link {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+}
+
+.cool-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
+}
+
+.cool-link:hover::after {
+  width: 100%;
+}
