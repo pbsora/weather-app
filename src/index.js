@@ -1,24 +1,43 @@
 import "./style.css";
-
-const degrees = document.querySelector(".degrees");
+import { settings, getDegrees, changeDegrees } from "./weather";
 
 const API =
-  "https://api.weatherapi.com/v1/current.json?key=fd8e96a88b8f4e0690f133006232407&q=belo horizonte";
+  "https://api.weatherapi.com/v1/current.json?key=fd8e96a88b8f4e0690f133006232407&q=";
 
-async function getAPI() {
-  const response = await fetch(API);
-  const data = await response.json();
-  degrees.textContent = data.current.temp_c + "°";
-  settings(data);
-  return data;
+export async function getAPI(location = "belo horizonte") {
+  try {
+    const response = await fetch(API + location);
+    const data = await response.json();
+    settings(data);
+    return data;
+  } catch (err) {
+    window.alert("Not found" + err);
+  }
 }
 
-const settings = (data) => {
-  console.log(data.current.temp_c);
-  console.log(data.current.temp_f);
-  console.log(data.current.is_day);
-  console.log(data.current.humidity);
-};
+const APIdata = getAPI();
 
-const APIdata = await getAPI();
-console.log(APIdata);
+const searchBtn = document.querySelector(".search-btn");
+const searchBox = document.querySelector(".search-box");
+
+searchBtn.addEventListener("click", () => {
+  getAPI(searchBox.value);
+});
+
+searchBox.addEventListener("keydown", (e) => {
+  if (e.key === "Enter") {
+    getAPI(searchBox.value);
+  }
+});
+
+const celsius = document.querySelector(".celsius");
+const fah = document.querySelector(".fahrenheit");
+
+console.log(celsius);
+
+celsius.addEventListener("click", () => {
+  changeDegrees("C");
+});
+fah.addEventListener("click", () => {
+  changeDegrees("F");
+});

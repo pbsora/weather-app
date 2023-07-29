@@ -1,0 +1,82 @@
+const degrees = document.querySelector(".degrees");
+const icon = document.querySelector(".weather-icon");
+const desc = document.querySelector(".weather-description");
+const humidity = document.querySelector(".humidity-percentage");
+const location = document.querySelector(".location");
+let time;
+let degreesC;
+let degreesF;
+
+export const settings = (data) => {
+  console.log(data);
+  degreesF = data.current.temp_f;
+  degreesC = data.current.temp_c;
+  time = data.location.localtime.slice(10).replace(":", "");
+  degrees.innerHTML = degreesC + "<p>°</p>";
+  icon.src = data.current.condition.icon;
+  desc.textContent = data.current.condition.text;
+  humidity.textContent = data.current.humidity + "%";
+  location.textContent = data.location.name;
+  changeBG(time);
+};
+
+export const getDegrees = () => {
+  return [degreesC, degreesF];
+};
+
+export const changeDegrees = (type) => {
+  console.log("deu");
+  if (type == "C") {
+    degrees.innerHTML = degreesC + "<p>°</p>";
+  } else if (type == "F") {
+    degrees.innerHTML = degreesF + "<p>°</p>";
+  }
+};
+
+const changeBG = (time) => {
+  const background = document.getElementById("card");
+  console.log(time);
+  if (time < 1200) {
+    const image = getRandomNumber(0, morningBG.length - 1);
+    background.style.backgroundImage = `url(../src/images/${morningBG[image]})`;
+  } else if (time < 1700) {
+    const image = getRandomNumber(0, dayBG.length - 1);
+    background.style.backgroundImage = `url(../src/images/${dayBG[image]})`;
+  } else if (time < 1800) {
+    const image = getRandomNumber(0, duskBG.length - 1);
+    background.style.backgroundImage = `url(../src/images/${dusk[image]})`;
+  } else {
+    const image = getRandomNumber(0, nightBG.length - 1);
+    background.style.backgroundImage = `url(../src/images/${nightBG[image]})`;
+  }
+};
+
+function getRandomNumber(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+const dayBG = [
+  "day4.png",
+  "day1.jpg",
+  "day2.jpg",
+  "day3.jpg",
+  "day4.jpg",
+  "day-cold.jpg",
+];
+const morningBG = [
+  "morning.jpg",
+  "morning1.jpg",
+  "morning2.jpg",
+  "morning3.jpg",
+];
+const nightBG = [
+  "night1.jpg",
+  "night2.jpg",
+  "night3.jpg",
+  "night4.jpg",
+  "night5.jpg",
+  "night6.jpg",
+  "night7.png",
+  "night8.jpg",
+];
+const duskBG = ["dusk.jpg", "dusk2.jpg", "dusk3.jpg"];

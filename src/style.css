@@ -1,9 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=REM:wght@100&family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@200&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@200&display=swap");
 * {
   margin: 0;
   padding: 0;
+}
+
+:root {
+  --common-font: "Roboto", sans-serif;
 }
 
 body {
@@ -19,7 +23,7 @@ body {
   width: 28rem;
   background-color: white;
   border-radius: 20px;
-  background-image: url(images/day1.jpg);
+
   background-size: 100% 100%;
   color: white;
 }
@@ -42,7 +46,12 @@ body {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 10px;
+  background-color: rgb(12, 11, 11, 0.3);
+  width: 22rem;
+  height: 3rem;
+  border-radius: 20px;
 }
 
 .search button {
@@ -78,6 +87,10 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
+::placeholder {
+  color: white;
+}
+
 .search input:focus {
   border: 1.5px black solid;
   border-radius: 15px;
@@ -89,22 +102,34 @@ body {
   margin-bottom: 30px;
   width: 25rem;
   height: 10rem;
+  display: flex;
+  justify-content: space-around;
+  border-radius: 20px;
 }
 
 .temperature {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
-  width: 20rem;
+  justify-content: center;
+  width: 23rem;
   margin: 0 auto;
   font-family: "Roboto", sans-serif;
+  border-radius: 20px;
 }
 
 .degrees {
-  font-size: 12rem;
+  font-size: 9rem;
   font-family: "Kanit", sans-serif;
   user-select: none;
+  display: flex;
+}
+
+.location {
+  font-size: 1.8rem;
+  margin-top: 20px;
+  font-family: "Raleway", sans-serif;
+  text-align: center;
 }
 
 #select-temperature {
@@ -144,4 +169,52 @@ body {
 
 .cool-link:hover::after {
   width: 100%;
+}
+
+.weather-now {
+  width: 11rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: var(--common-font);
+}
+
+.weather-icon {
+  height: 5rem;
+}
+
+.weather-description {
+  font-size: 1.2rem;
+  font-family: var(--common-font);
+}
+
+.humidity {
+  width: 11rem;
+  font-family: var(--common-font);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  align-items: center;
+  gap: 1rem;
+}
+
+.humidity-icon {
+  height: 4rem;
+  grid-row-start: 3;
+}
+
+.humidity h3 {
+  grid-row: 2;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+}
+
+.humidity-percentage {
+  grid-column: 3;
+  grid-row: 3;
+  text-align: center;
+  font-size: 2rem;
 }
